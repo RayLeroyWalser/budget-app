@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/customListViewContainer" 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent" 
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<RelativeLayout android:id="@+id/customDescAmtContainer" 
+		android:layout_height="wrap_content" 
+		android:layout_width="wrap_content">
+		
+		<TextView android:id="@+id/customListAmount" 
+			android:text="234.12" 
+			android:layout_height="wrap_content" 
+			android:padding="5sp" 
+			android:layout_width="wrap_content" android:layout_alignParentRight="true" android:layout_alignBottom="@+id/customListDescription" android:layout_alignTop="@+id/customListDescription" android:gravity="right|center">
+		</TextView>
+		
+		<TextView android:id="@+id/customListDescription" 
+			android:layout_height="wrap_content" 
+			android:layout_width="wrap_content" 
+			android:textSize="18sp" 
+			android:padding="5sp" 
+			android:textColor="@color/white" 
+			android:layout_toLeftOf="@+id/customListAmount" android:text="Item Description Here" android:layout_alignParentLeft="true">
+		</TextView>
+		
+	</RelativeLayout>
+	
+	
+	
+	<TextView android:layout_height="wrap_content" 
+		android:text="Category" 
+		android:id="@+id/customListCategory"  
+		android:layout_below="@+id/customDescAmtContainer" 
+		android:layout_width="wrap_content"
+		android:padding="5sp" android:textColor="@color/white">
+	</TextView>
+		
+	<TextView android:id="@+id/customListDate" 
+		android:layout_below="@+id/customDescAmtContainer" 
+		android:text="01/01/1900" 
+		android:layout_height="wrap_content" 
+		android:layout_width="wrap_content" 
+		android:layout_toRightOf="@+id/customListCategory" 
+		android:layout_alignParentRight="true" 
+		android:gravity="right" 
+		android:padding="5sp" 
+		android:textColor="@color/white">
+	</TextView>
+	
+
+
+</RelativeLayout>

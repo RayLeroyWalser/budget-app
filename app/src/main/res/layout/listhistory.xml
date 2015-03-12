@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout android:layout_width="fill_parent" 
+	android:layout_height="fill_parent" 
+	xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:id="@+id/viewItemsScreen">
+	
+	<TextView android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/listHistoryTitle"
+		android:text="Past entries:"
+		android:textSize="20sp">
+	</TextView>
+	
+	<ImageButton android:layout_width="wrap_content" 
+		android:id="@+id/overviewInfoButton"  
+		android:layout_height="wrap_content"
+		android:scaleType="fitCenter" 
+		android:adjustViewBounds="true" 
+		android:layout_alignParentRight="true" 
+		android:layout_alignParentTop="true"
+		android:background="@drawable/informationbutton" 
+		android:onClick="onHelpClick">	
+	</ImageButton>
+	
+	<LinearLayout android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/listHistoryDynamicFiltersContainer"
+		android:layout_below="@+id/listHistoryTitle">
+	</LinearLayout>
+	
+	<RelativeLayout android:id="@+id/listHistoryFiltersContainer" 
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/listHistoryDynamicFiltersContainer">
+	
+		<TextView android:text="" 
+			android:id="@+id/listHistoryActiveFilters" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:visibility="gone">
+		</TextView>
+		
+	</RelativeLayout>
+	
+	<LinearLayout android:id="@+id/listHistoryListviewContainer"
+	    android:layout_height="fill_parent"
+	    android:layout_width="fill_parent"
+		android:layout_above="@+id/listViewButtonRow"
+		android:layout_below="@+id/listHistoryDynamicFiltersContainer"
+		android:paddingLeft="5sp" 
+		android:paddingRight="5sp" >
+		
+		<ListView android:id="@+id/itemsListView" 
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content" 
+			android:choiceMode="singleChoice"  >
+		</ListView>
+	</LinearLayout>
+	
+	<LinearLayout android:id="@+id/listViewButtonRow" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true">
+	
+		<Button android:text="Remove" 
+			android:id="@+id/deleteRecord" 
+			android:layout_height="wrap_content" 
+			android:layout_weight="1" 
+			android:layout_width="fill_parent" 
+			android:onClick="onRemoveClick">
+		</Button>
+		
+		<Button android:id="@+id/viewRecord" 
+			android:layout_height="wrap_content" 
+			android:layout_weight="1" 
+			android:layout_width="fill_parent" 
+			android:onClick="onViewClick" android:text="Edit">
+		</Button>
+		
+	
+</LinearLayout>
+	
+</RelativeLayout>

@@ -1,0 +1,32 @@
+<RelativeLayout 
+	android:id="@+id/setFiltersContainer" 
+	xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content">
+
+	<ListView 
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent" 
+		android:id="@+id/setFiltersListView" android:layout_above="@+id/setFiltersButonContainer">
+	</ListView>
+	
+	<LinearLayout android:id="@+id/setFiltersButonContainer" 
+		android:layout_alignParentBottom="true" 
+		android:layout_height="wrap_content" 
+		android:layout_width="fill_parent">
+		
+		<Button android:text="Set Filters" 
+			android:id="@+id/setFiltersButton" 
+			android:layout_height="wrap_content" 
+			android:onClick="onSetClick" android:layout_weight="1" android:layout_width="fill_parent">
+		</Button>
+		
+		<Button android:layout_height="wrap_content" 
+			android:id="@+id/setFiltersDeSelectAllButton" 
+			android:layout_toRightOf="@+id/setFiltersButton" 
+			android:text="Select All" android:layout_weight="1" android:layout_width="fill_parent" android:onClick="onSelectAllClick" android:visibility="invisible">
+		</Button>
+	
+	</LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,128 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/addProjection"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TextView
+        android:id="@+id/addProjectionTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="5sp"
+        android:text="Add/Update Estimate"
+        android:textAppearance="?android:attr/textAppearanceLarge" >
+    </TextView>
+
+    <ImageButton
+        android:id="@+id/overviewInfoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        android:background="@drawable/informationbutton"
+        android:onClick="onHelpClick"
+        android:scaleType="fitCenter" >
+    </ImageButton>
+
+    <RelativeLayout
+        android:id="@+id/editProjectionCategoryContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addProjectionTitle" >
+
+        <TextView
+            android:id="@+id/editProjectionCategoryPrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="Category:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/editProjectionCategoryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/editProjectionCategoryPrompt"
+            android:ems="10" >
+        </EditText>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/newProjectionButtonContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10sp" >
+
+        <Button
+            android:id="@+id/newProjectionSave"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onSaveClick"
+            android:text="Save" >
+        </Button>
+
+        <Button
+            android:id="@+id/newProjectionClear"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onClearClick"
+            android:text="Clear" >
+        </Button>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/editProjectionAmountContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editProjectionCategoryContainer" >
+
+        <TextView
+            android:id="@+id/editProjectionAmountPrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="Amount:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/editProjectionAmountEntry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/editProjectionToggleAmountSign"
+            android:layout_toRightOf="@+id/editProjectionAmountPrompt"
+            android:ems="10"
+            android:inputType="numberDecimal" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/editProjectionToggleAmountSign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:onClick="onToggleSignClick"
+            android:text="Toggle Sign" />
+    </RelativeLayout>
+
+    <CheckBox
+        android:id="@+id/editProjectionActiveCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editProjectionAmountContainer"
+        android:text="Include in Overview" />
+
+</RelativeLayout>

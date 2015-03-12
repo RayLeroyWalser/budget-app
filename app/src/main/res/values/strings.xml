@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, overview!</string>
+    <string name="app_name">Budget</string>
+    <string name="enter_single_expense">Add Expense / Income</string>
+    <string name="edit_profile">My Profile</string>
+    <string name="list_history">Lost History</string>
+    <string name="edit_name">Edit Profile</string>
+    <string name="history_name">View History</string>
+    <string name="single_name">Add Single Expense</string>
+    <string name="current_profile_name">Current Projections</string>
+    <string name="suggested_profile_name">Suggested Projections</string>
+    <string name="add_projection_name">Add New Projection</string>
+    <string name="history_filters_name">Set Filters</string>
+    <string name="clear_filters_name">Clear Filters</string>
+    <string name="set_filters_name">Set Filters</string>
+    <string name="information_name">Information</string>
+    <string name="backup_name">Backup</string>
+    <string name="previous_view_name">Previous Month\'s View</string>
+    
+    <!-- Edit Profile prompts -->
+    <string name="name_entry_prompt">Enter profile name here:</string>
+    
+    <array name="category">
+    	<item>Food</item>
+    	<item>Rent</item>
+    	<item>Paycheck</item>
+    </array>
+    <array name="signs">
+    	<item>Expense</item>
+    	<item>Income</item>
+    </array>
+</resources>

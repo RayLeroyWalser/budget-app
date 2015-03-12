@@ -1,0 +1,53 @@
+<RelativeLayout android:id="@+id/overviewListviewAllContainer"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:padding="2sp">
+		
+	
+	<ProgressBar android:id="@+id/overviewListViewProgress" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		style="@android:style/Widget.ProgressBar.Horizontal" 
+		android:layout_alignBottom="@+id/overviewListviewContainer" 
+		android:layout_alignTop="@+id/overviewListviewContainer" >
+	</ProgressBar>
+	
+	<LinearLayout android:id="@+id/overviewListviewContainer" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content">
+		
+		<TextView android:text="Category Category Category Category" 
+			android:id="@+id/overviewListViewCategory" 
+			android:layout_height="wrap_content" 
+			android:layout_width="fill_parent" 
+			android:layout_gravity="center" 
+			android:textColor="@color/black" 
+			android:layout_weight="4" 
+			android:paddingLeft="3sp">
+		</TextView>
+		
+		<TextView android:text="Actual" 
+			android:id="@+id/overviewListViewActual" 
+			android:layout_height="wrap_content" 
+			android:layout_width="fill_parent" 
+			android:layout_gravity="center" 
+			android:gravity="right" 
+			android:textColor="@color/black" 
+			android:layout_weight="4">
+		</TextView>
+		
+		<TextView android:text="Estimate" 
+			android:id="@+id/overviewListViewEstimate" 
+			android:layout_height="wrap_content" 
+			android:layout_width="fill_parent" 
+			android:layout_gravity="center" 
+			android:gravity="right" 
+			android:textColor="@color/black" 
+			android:layout_weight="4" android:paddingRight="3sp">
+		</TextView>
+		
+	</LinearLayout>
+	
+
+</RelativeLayout>

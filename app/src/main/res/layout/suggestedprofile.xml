@@ -1,0 +1,34 @@
+<RelativeLayout android:id="@+id/suggestedProfileContainer" 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent" 
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<TextView android:id="@+id/suggestedProfileMessage"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Message here" 
+		android:visibility="gone">
+	</TextView>
+	
+	<LinearLayout android:id="@+id/suggestedProfileListviewContainer"
+		android:layout_above="@+id/suggestedProfileSaveButton"
+		android:layout_below="@+id/suggestedProfileMessage"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		
+		<ListView android:id="@+id/suggestedProfileSuggestions" 
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content">
+		</ListView>
+		
+	</LinearLayout>
+	
+	<Button android:text="Save Changes" 
+		android:layout_width="wrap_content" 
+		android:id="@+id/suggestedProfileSaveButton" 
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true" 
+		android:layout_centerHorizontal="true" 
+		android:onClick="onSaveClick">
+	</Button>
+</RelativeLayout>

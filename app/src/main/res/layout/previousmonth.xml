@@ -1,0 +1,97 @@
+<RelativeLayout android:id="@+id/previousMonthContainer" 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent" 
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+    
+    <TextView
+        android:id="@+id/previousMonthContainerTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="Past Data" 
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:id="@+id/previousMonthFromContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/previousMonthContainerTitle">
+        
+	    <TextView
+	        android:id="@+id/previousMonthFromDate"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:text="From:" 
+	        android:layout_weight="1"/>
+	
+	    <Spinner
+	        android:id="@+id/previousMonthFromMonthSpinner"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"/>
+	
+	    <Spinner
+	        android:id="@+id/previousMonthFromYearSpinner"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" 
+	        android:layout_weight="1"/>
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/previousMonthToContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/previousMonthFromContainer">
+        
+	    <TextView
+	        android:id="@+id/previousMonthToDate"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:text="To:" 
+	        android:layout_weight="1"/>
+	
+	    <Spinner
+	        android:id="@+id/previousMonthToMonthSpinner"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" 
+	        android:layout_weight="1"/>
+	
+	    <Spinner
+	        android:id="@+id/previousMonthToYearSpinner"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" 
+	        android:layout_weight="1"/>
+
+    </LinearLayout>
+    
+    <RelativeLayout android:id="@+id/previousMonthListviewContainer"
+        android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+		android:layout_below="@+id/previousMonthToContainer" >
+		
+        <TextView android:id="@+id/previousMonthNetIncomeTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+        </TextView>
+        
+        <com.example.budget.component.PreviousMonthPieChart
+            android:id="@+id/previousMonthPieChart"
+            android:layout_below="@+id/previousMonthNetIncomeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:onClick="onPieClick" >
+
+        </com.example.budget.component.PreviousMonthPieChart>
+        <!-- 
+		<ListView android:layout_below="@+id/previousMonthPieChart"
+		    android:layout_width="fill_parent" 
+			android:layout_height="wrap_content" 
+			android:id="@+id/previousMonthByCategoryList" >
+		</ListView>
+		 -->
+	</RelativeLayout>
+
+
+</RelativeLayout>

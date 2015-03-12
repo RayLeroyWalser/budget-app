@@ -1,0 +1,60 @@
+<RelativeLayout android:id="@+id/RelativeLayout01" 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent" 
+	xmlns:android="http://schemas.android.com/apk/res/android" android:padding="10sp">
+	
+	<TextView android:text="Getting Started" 
+		android:id="@+id/noEntriesTitleBar" 
+		android:layout_height="wrap_content" 
+		android:textSize="30sp" 
+		android:layout_width="fill_parent" 
+		android:gravity="center"
+		android:paddingBottom="10sp">
+	</TextView>
+	
+	<RelativeLayout android:id="@+id/noEntriesAddSingleContainer" 
+		android:layout_height="wrap_content" 
+		android:layout_width="fill_parent"
+		android:layout_below="@+id/noEntriesTitleBar" android:padding="5sp">
+		
+		<TextView android:id="@+id/noEntriesAddSinglePrompt" 
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content" 
+			android:layout_toLeftOf="@+id/noEntryAddSingleButton"
+			android:gravity="center_vertical" android:text="This app can help you track your expenses.  Press this button to add an expense or income.">
+		</TextView>
+		
+		<Button android:layout_width="wrap_content" 
+			android:text="Add Entry" 
+			android:layout_height="wrap_content" 
+			android:id="@+id/noEntryAddSingleButton"
+			android:layout_alignParentRight="true"
+			android:layout_centerVertical="true" 
+			android:onClick="onAddClick">
+		</Button>
+	
+	</RelativeLayout>
+	
+	<RelativeLayout android:id="@+id/noEntriesProfileContainer" 
+		android:layout_below="@+id/noEntriesAddSingleContainer"
+		android:layout_height="wrap_content" 
+		android:layout_width="wrap_content" android:padding="5sp">
+		
+		<TextView android:id="@+id/noEntriesEditProfilePrompt" 
+			android:layout_width="fill_parent" 
+			android:layout_toLeftOf="@+id/noEntriesAddProfileButton"
+			android:gravity="center_vertical" 
+			android:layout_height="wrap_content" android:text="It can also help you plan your estimated monthly expenses. Press this button to set up your monthly expected budget.  (This can also be accessed via Menu &gt; Edit Profile)">
+		</TextView>
+		
+		<Button android:layout_width="wrap_content" 
+			android:text="Edit Profile" 
+			android:layout_height="wrap_content" 
+			android:layout_alignParentRight="true"
+			android:id="@+id/noEntriesAddProfileButton" android:layout_centerVertical="true" android:onClick="onEditProfileClick">
+		</Button>
+	
+	</RelativeLayout>
+
+
+</RelativeLayout>

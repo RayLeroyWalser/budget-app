@@ -1,0 +1,209 @@
+<RelativeLayout android:id="@+id/backupContainer" 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent" 
+	android:padding="5sp"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<TextView android:id="@+id/backupTitleBar" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:text="Backup Options"
+		android:textSize="22sp" 
+		android:gravity="center_horizontal">
+	</TextView>
+	
+	<RelativeLayout android:id="@+id/backupRegisterContainer" 
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/backupTitleBar"
+		android:visibility="gone">
+		
+		<TextView android:id="@+id/backupRegisterInfo" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:text="You must register first in order to backup any data. Please enter the information below and select 'Register'."
+			android:gravity="center_vertical"
+			android:paddingTop="5sp"
+			android:paddingBottom="5sp">
+		</TextView>
+		
+		<TextView android:id="@+id/backupRegisterUsernamePrompt" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:layout_alignTop="@+id/backupRegisterUsername"
+			android:layout_alignBottom="@+id/backupRegisterUsername"
+			android:text="Username:" 
+			android:gravity="center_vertical">
+		</TextView>
+	
+		<EditText android:id="@+id/backupRegisterUsername" 
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/backupRegisterInfo"
+			android:text=""
+			android:layout_toRightOf="@+id/backupRegisterUsernamePrompt">
+		</EditText>
+		
+		<TextView android:id="@+id/backupRegisterPasswordPrompt" 
+			android:layout_below="@+id/backupRegisterUsername" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:layout_alignTop="@+id/backupRegisterPassword"
+			android:layout_alignBottom="@+id/backupRegisterPassword"
+			android:gravity="center_vertical"
+			android:text="Password:">
+		</TextView>
+		
+		<EditText android:id="@+id/backupRegisterPassword" 
+			android:layout_below="@+id/backupRegisterUsername" 
+			android:layout_toRightOf="@+id/backupRegisterUsernamePrompt"
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content" 
+			android:text="">
+		</EditText>
+		
+		<TextView android:id="@+id/backupRegisterReenterPrompt" 
+			android:layout_below="@+id/backupRegisterPassword" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:layout_alignTop="@+id/backupRegisterReenterPassword"
+			android:layout_alignBottom="@+id/backupRegisterReenterPassword"
+			android:gravity="center_vertical"
+			android:text="Re-enter:">
+		</TextView>
+		
+		<EditText android:id="@+id/backupRegisterReenterPassword" 
+			android:layout_below="@+id/backupRegisterPassword" 
+			android:layout_toRightOf="@+id/backupRegisterUsernamePrompt"
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content" 
+			android:text="">
+		</EditText>
+		
+		<Button android:layout_below="@+id/backupRegisterReenterPassword" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:text="Register" 
+			android:id="@+id/backupRegisterButton"
+			android:onClick="onRegisterClick">
+		</Button>
+		
+	</RelativeLayout>
+
+	<RelativeLayout android:id="@+id/backupProgressContainer" 
+		android:layout_below="@+id/backupRegisterContainer"
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" 
+		android:paddingTop="10sp">
+		
+		<ProgressBar android:id="@+id/backupDataProgressBar" 
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"
+			style="@android:style/Widget.ProgressBar.Horizontal" >
+		</ProgressBar>
+		
+		<TextView android:id="@+id/backupProgressBarLabel" 
+			android:layout_below="@+id/backupDataProgressBar" 
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content" 
+			android:gravity="center"
+			android:text="0%">
+		</TextView>
+		
+	</RelativeLayout>
+
+	<RelativeLayout android:id="@+id/backupSendReceiveContainer" 
+		android:layout_below="@+id/backupProgressContainer" 
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content"
+		android:visibility="visible">
+		
+		<TextView android:id="@+id/backupEnterUsernamePrompt" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:layout_alignTop="@+id/backupSendReceiveUsername"
+			android:layout_alignBottom="@+id/backupSendReceiveUsername"
+			android:gravity="center_vertical"
+			android:text="Username:">
+		</TextView>
+		
+		<EditText android:id="@+id/backupSendReceiveUsername" 
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"
+			android:layout_toRightOf="@+id/backupEnterUsernamePrompt"
+			android:text="">
+		</EditText>	
+		
+		<TextView android:id="@+id/backupEnterPasswordPrompt" 
+			android:layout_below="@+id/backupSendReceiveUsername" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:layout_alignTop="@+id/backupSendReceivePassword"
+			android:layout_alignBottom="@+id/backupSendReceivePassword"
+			android:gravity="center_vertical"
+			android:text="Password:">
+		</TextView>
+		
+		<EditText android:id="@+id/backupSendReceivePassword" 
+			android:layout_below="@+id/backupSendReceiveUsername" 
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content" 
+			android:text="" 
+			android:layout_toRightOf="@+id/backupEnterUsernamePrompt" 
+			android:inputType="textPassword">
+		</EditText>
+		
+		<LinearLayout android:id="@+id/backupButtonContainer"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/backupSendReceivePassword">
+			
+			<Button
+			    android:id="@+id/backupSendDataButton"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:onClick="onBackupClick"
+			    android:text="Backup" >
+
+			</Button>
+			
+			<Button android:id="@+id/backupReceiveDataButton"
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content" 
+				android:text="Restore"
+				android:onClick="onRestoreClick"
+				android:layout_weight="1">
+			</Button>
+			
+			<Button android:id="@+id/backupGetCSVButton" 
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content" 
+				android:text="Download .csv"
+				android:onClick="onCSVClick"
+				android:layout_weight="1">
+			</Button>
+		
+		</LinearLayout>
+
+	</RelativeLayout>
+
+	<TextView android:id="@+id/backupSummaryText" 
+		android:text="" 
+		android:textSize="12sp"
+		android:layout_below="@+id/backupSendReceiveContainer" 
+		android:layout_height="fill_parent" 
+		android:layout_width="fill_parent" 
+		android:scrollbars="vertical">
+	</TextView>
+	
+	<TextView android:id="@+id/backupBuffer" 
+		android:text="" 
+		android:layout_height="wrap_content" 
+		android:layout_above="@+id/backupSummaryText" 
+		android:layout_width="wrap_content"
+		android:visibility="gone">
+	</TextView>
+
+	
+</RelativeLayout>

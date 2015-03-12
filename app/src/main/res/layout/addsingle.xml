@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	>
+	<RelativeLayout android:id="@+id/addSingleScreen" 
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent" 
+		 
+		android:padding="10sp">
+		
+		<TextView android:text="Enter expense/deposit name here:" 
+			android:id="@+id/expenseNamePrompt" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content">
+		</TextView>
+	
+		<EditText android:id="@+id/enterExpense" 
+			android:layout_below="@+id/expenseNamePrompt" 
+			android:text="" 
+			android:layout_height="wrap_content" 
+			android:layout_width="fill_parent">
+		</EditText>
+		
+	
+		<RelativeLayout android:layout_width="fill_parent"
+			android:layout_height="wrap_content" 
+			android:layout_below="@+id/enterExpense" 
+			android:id="@+id/spinnersContainer">
+			
+			<Button android:id="@+id/backToSpinnerButton" 
+				android:layout_alignParentRight="true"
+				android:text="Back" 
+				android:layout_height="wrap_content" 
+				android:layout_width="wrap_content"
+				android:visibility="gone"
+				android:onClick="onBackClick">
+			</Button>
+			
+			<EditText android:text="Enter new category here" 
+				android:id="@+id/newCategory" 
+				android:layout_toLeftOf="@+id/backToSpinnerButton"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:visibility="gone" android:selectAllOnFocus="true">
+			</EditText>
+			
+			<TextView android:text="Select the category:" 
+				android:id="@+id/categorySelectPrompt" 
+				android:layout_height="wrap_content" 
+				android:layout_width="wrap_content">
+			</TextView>
+				
+			<Spinner android:layout_height="wrap_content" 
+				android:id="@+id/categorySpinner" 
+				android:layout_below="@+id/categorySelectPrompt" 
+				android:layout_width="fill_parent">
+				<!--android:entries="@array/category"  -->
+			</Spinner>
+			
+	</RelativeLayout>
+		
+		<TextView android:text="Select the date for the expense:" 
+			android:layout_below="@+id/spinnersContainer" 
+			android:id="@+id/datePrompt" 
+			android:layout_height="wrap_content" 
+			android:layout_width="wrap_content">
+		</TextView>
+		
+		<DatePicker android:layout_height="wrap_content" 
+			android:layout_below="@+id/datePrompt" 
+			android:layout_width="fill_parent" 
+			android:id="@+id/addSingleDatePicker">
+		</DatePicker>
+	
+		<TextView android:layout_height="wrap_content" 
+			android:layout_width="wrap_content" 
+			android:layout_below="@+id/addSingleDatePicker" 
+			android:id="@+id/singleAmountPrompt" 
+			android:text="Enter the amount for the item:">
+		</TextView>
+		
+		<LinearLayout android:layout_width="fill_parent" 
+			android:id="@+id/expenseContainer" 
+			android:layout_height="wrap_content" 
+			android:layout_below="@+id/singleAmountPrompt">
+			
+			<EditText android:layout_height="wrap_content"  
+				android:id="@+id/enterSingleAmount" 
+				android:layout_width="fill_parent"
+				android:layout_weight="1" android:inputType="numberDecimal" android:layout_gravity="center">
+			</EditText>
+			
+			<Button android:id="@+id/signButton"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:layout_width="fill_parent"
+			    android:text="Toggle Sign"
+			    android:onClick="onSignClick">
+			</Button>
+			
+		</LinearLayout>
+			
+		<LinearLayout android:layout_height="wrap_content" 
+			android:id="@+id/singleButtonsContainer" 
+			android:layout_width="fill_parent" android:layout_below="@+id/expenseContainer" android:paddingTop="20sp">
+			
+			<Button android:layout_height="wrap_content" 
+				android:id="@+id/addSingleButton" 
+				android:layout_weight="1" 
+				android:layout_width="fill_parent" 
+				android:onClick="onAddClick" android:text="Save">
+			</Button>
+			
+			<Button	android:layout_height="wrap_content" 
+				android:id="@+id/cancelSingleButton" 
+				android:text="Cancel" 
+				android:layout_width="fill_parent" 
+				android:layout_weight="1" 
+				android:onClick="onCancelClick"></Button>
+				
+		</LinearLayout>	
+	
+	</RelativeLayout>
+</ScrollView>

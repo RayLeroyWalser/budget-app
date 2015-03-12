@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.example.budget"
+      android:versionCode="2"
+      android:versionName="1.0.2">
+      <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+      <uses-sdk android:minSdkVersion="19"></uses-sdk>
+    <application android:icon="@drawable/dollarsign" 
+    	android:label="@string/app_name"
+    	android:theme="@android:style/Theme.NoTitleBar">
+        <activity android:name=".view.Overview"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".view.EditProfileView"
+        	android:label="@string/edit_name">
+        </activity> 
+        <activity android:name=".view.ListHistoryView"
+        	android:label="@string/list_history">
+        </activity>
+        <activity android:name=".view.AddSingleEntryView"
+        	android:label="@string/single_name">
+        </activity>
+        <activity android:name=".view.CurrentProfileView"
+        	android:label="@string/current_profile_name">
+        </activity>
+        <activity android:name=".view.SuggestedProfileView"
+        	android:label="@string/suggested_profile_name">
+        </activity>
+        <activity android:name=".view.EditCategoryView"
+        	android:label="@string/add_projection_name">
+        </activity>
+        <activity android:name=".view.HistoryFiltersView"
+        	android:label="@string/history_filters_name">
+        </activity>
+        <activity android:name=".view.InformationView"
+        	android:label="@string/information_name">
+        </activity>
+        <activity android:name=".view.BackupView"
+        	android:label="@string/backup_name">
+        </activity>
+        <activity android:name=".view.PreviousMonthView"
+        	android:label="@string/previous_view_name">
+       	</activity>
+    </application>
+
+
+</manifest> 

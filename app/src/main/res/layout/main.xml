@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/overviewScreen"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TextView
+        android:id="@+id/overviewTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        android:clickable="true"
+        android:gravity="center_horizontal"
+        android:onClick="showPreviousMonth"
+        android:text="Month Overview"
+        android:textColor="@color/white"
+        android:textSize="32sp" >
+    </TextView>
+
+    <ImageButton
+        android:id="@+id/overviewInfoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        android:background="@drawable/informationbutton"
+        android:onClick="onHelpClick"
+        android:scaleType="fitCenter" >
+    </ImageButton>
+
+    <RelativeLayout
+        android:id="@+id/overviewTextLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/overviewTitle"
+        android:layout_margin="5sp" >
+
+        <RelativeLayout
+            android:id="@+id/textColumn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/spaceHolder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" " >
+            </TextView>
+
+            <TextView
+                android:id="@+id/overviewRowName2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spaceHolder"
+                android:text="Expenses:"
+                android:textColor="@color/white" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/overviewRowName1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/overviewRowName2"
+                android:text="Income:"
+                android:textColor="@color/white" >
+            </TextView>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/dataColumns"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/textColumn1" >
+
+            <RelativeLayout
+                android:id="@+id/dataColumn1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/actualTitle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Actual"
+                    android:textColor="@color/white" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/dataActualTodate"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/actualTitle"
+                    android:gravity="center_horizontal"
+                    android:text="-no data-" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/dataMonthActual"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dataActualTodate"
+                    android:gravity="center_horizontal"
+                    android:text="-no data-" >
+                </TextView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/dataColumn2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textColumn1"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/projectedTitle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Expected"
+                    android:textColor="@color/white" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/dataTodateProjected"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/projectedTitle"
+                    android:gravity="center_horizontal"
+                    android:text="-no data-" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/dataMonthProjected"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dataTodateProjected"
+                    android:gravity="center_horizontal"
+                    android:text="-no data-" >
+                </TextView>
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/summaryContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/overviewTextLayout"
+        android:layout_margin="5sp"
+        android:paddingLeft="10sp"
+        android:paddingRight="10sp" >
+
+        <TextView
+            android:id="@+id/monthProjectionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Month End +/-:"
+            android:textColor="@color/white"
+            android:visibility="gone" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/monthProjectionData"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/monthProjectionTitle"
+            android:gravity="center"
+            android:text="-no data-"
+            android:visibility="gone" >
+        </TextView>
+
+        <ProgressBar
+            android:id="@+id/overviewProgressBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+        </ProgressBar>
+
+        <TextView
+            android:id="@+id/overviewProgressBarLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/overviewProgressBar"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="No estimates entered!" >
+        </TextView>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/categoryTotalsLabel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/summaryContainer"
+        android:gravity="center"
+        android:text="Past expenses by category:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:visibility="gone" >
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/overviewButtonsLinearLayout"
+        android:layout_below="@+id/categoryTotalsLabel"
+        android:padding="5sp" >
+
+        <ListView
+            android:id="@+id/byCategoryList"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+        </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/overviewButtonsLinearLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" >
+
+        <Button
+            android:id="@+id/overviewProfileButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onEditProfileClick"
+            android:text="Profile" />
+
+        <Button
+            android:id="@+id/overviewAddNewButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onAddClick"
+            android:text="Add New" />
+
+        <Button
+            android:id="@+id/overviewHistoryButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onShowHistoryClick"
+            android:text="History" />
+
+    </LinearLayout>
+
+</RelativeLayout>

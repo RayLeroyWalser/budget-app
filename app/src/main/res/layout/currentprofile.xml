@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/currentProfileContainer" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content">
+	
+	<TextView android:text="Current Budget:" 
+		android:id="@+id/currentProfileTitle" 
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" android:textSize="20sp">
+	</TextView>
+	
+	<ImageButton android:layout_width="wrap_content" 
+		android:id="@+id/overviewInfoButton"  
+		android:layout_height="wrap_content"
+		android:scaleType="fitCenter" 
+		android:adjustViewBounds="true" 
+		android:layout_alignParentRight="true" 
+		android:layout_alignParentTop="true"
+		android:background="@drawable/informationbutton" android:onClick="onHelpClick">
+	
+	</ImageButton>
+	
+	<LinearLayout android:id="@+id/currentProfileListViewContainer"
+			android:layout_above="@+id/currentProfileButtonContainer"
+			android:layout_below="@+id/currentProfileTitle"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent">
+			
+		<ListView android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"  
+			android:id="@+id/currentProfileList">
+		</ListView>
+		
+	</LinearLayout>
+	
+	<LinearLayout android:layout_height="wrap_content" 
+		android:id="@+id/currentProfileButtonContainer" 
+		android:layout_width="fill_parent" 
+		android:layout_alignParentBottom="true">
+		
+		<Button android:layout_height="wrap_content" 
+			android:id="@+id/currentProfileEditButton" 
+			android:text="Edit" 
+			android:layout_weight="1" 
+			android:layout_width="fill_parent" 
+			android:onClick="onEditClick">
+		</Button>
+		
+		<Button android:layout_height="wrap_content" 
+			android:text="Remove" 
+			android:id="@+id/currentProfileRemoveButton" 
+			android:layout_weight="1" 
+			android:layout_width="fill_parent" 
+			android:onClick="onRemoveClick">
+		</Button>
+		
+	</LinearLayout>
+	
+</RelativeLayout>

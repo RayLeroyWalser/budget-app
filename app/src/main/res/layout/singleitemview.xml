@@ -1,0 +1,6 @@
+<TextView android:text="@+id/TextView01" 
+	android:layout_height="wrap_content" 
+	xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:id="@+id/singleItemTextView" 
+	android:layout_width="fill_parent">
+</TextView>

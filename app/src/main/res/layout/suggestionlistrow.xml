@@ -1,0 +1,59 @@
+<RelativeLayout android:id="@+id/suggestionListItemContainer" 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent" 
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<TextView android:text="Category" 
+		android:id="@+id/suggestionListCategory" 
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" android:textSize="20sp">
+	</TextView>
+	
+	<TextView android:layout_height="wrap_content" 
+		android:id="@+id/suggestionListCurrentAmount" 
+		android:text="Current Amount" 
+		android:layout_width="wrap_content" 
+		android:layout_toLeftOf="@+id/suggestionListButton" android:textSize="14sp">
+	</TextView>
+	
+	<TextView android:id="@+id/suggestionListCurrentPointer" 
+		android:layout_toLeftOf="@+id/suggestionListCurrentAmount" 
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" 
+		android:text=">">
+	</TextView>
+	
+	<Button android:id="@+id/suggestionListButton" 
+		android:layout_height="wrap_content" 
+		android:text="Toggle" 
+		android:layout_width="wrap_content" 
+		android:layout_alignParentRight="true">
+	</Button>
+	
+	<TextView android:layout_height="wrap_content" 
+		android:id="@+id/suggestionListSuggestedAmount" 
+		android:text="Suggested Amount" 
+		android:layout_width="wrap_content" 
+		android:layout_toLeftOf="@+id/suggestionListButton" 
+		android:layout_alignBottom="@+id/suggestionListButton" android:textSize="14sp">
+	</TextView>
+	
+	<TextView android:id="@+id/suggestionListSuggestedPointer" 
+		android:layout_toLeftOf="@+id/suggestionListSuggestedAmount" 
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" 
+		android:text=">"
+		android:layout_alignBottom="@+id/suggestionListSuggestedAmount"
+		android:visibility="invisible">
+		</TextView>
+	
+	<TextView android:layout_height="wrap_content" 
+		android:id="@+id/suggestionListDescription" 
+		android:text="Description" 
+		android:layout_width="wrap_content" 
+		android:layout_alignBottom="@+id/suggestionListButton" android:textSize="12sp">
+	</TextView>
+
+
+
+</RelativeLayout>
