@@ -88,11 +88,11 @@ public class Overview extends AbstractBudgetView {
     }
 
     private void setContentView() {
-        if (overviewProvider.hasEntries()) {
+//        if (overviewProvider.hasEntries()) {
             setContentView(R.layout.main);
-        } else {
-            setContentView(R.layout.noentriesoverview);
-        }
+//        } else {
+//            setContentView(R.layout.noentriesoverview);
+//        }
     }
 
     @Override
@@ -171,16 +171,11 @@ public class Overview extends AbstractBudgetView {
 
     private void refreshListData() {
         overviewItems.clear();
-        overviewItems = addColumnHeaderPlaceholder(overviewItems);
         overviewItems
                 .addAll(overviewProvider.getTotalsByCategoryForMonth(new DateTime().monthOfYear().get()));
         Collections.sort(overviewItems);
+        overviewItems.add(0,OverviewItem.defaultItem);
         aa.notifyDataSetChanged();
-    }
-
-    private ArrayList<OverviewItem> addColumnHeaderPlaceholder(ArrayList<OverviewItem> list) {
-        list.add(OverviewItem.defaultItem);
-        return list;
     }
 
     public void onAddClick(View view) {

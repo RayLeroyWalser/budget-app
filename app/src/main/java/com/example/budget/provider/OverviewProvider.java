@@ -23,6 +23,7 @@ public class OverviewProvider extends BudgetDbAdapter {
         if (queryResult.moveToFirst()) {
             amount = queryResult.getDouble(0);
         }
+        queryResult.close();
 
         return amount;
     }
@@ -36,6 +37,7 @@ public class OverviewProvider extends BudgetDbAdapter {
         if (queryResult.moveToFirst()) {
             amount = queryResult.getDouble(0);
         }
+        queryResult.close();
 
         return amount;
     }
@@ -49,6 +51,7 @@ public class OverviewProvider extends BudgetDbAdapter {
         if (queryResult.moveToFirst()) {
             amount = queryResult.getDouble(0);
         }
+        queryResult.close();
 
         return amount;
     }
@@ -62,20 +65,23 @@ public class OverviewProvider extends BudgetDbAdapter {
         if (queryResult.moveToFirst()) {
             amount = queryResult.getDouble(0);
         }
+        queryResult.close();
 
         return amount;
     }
 
     public ArrayList<OverviewItem> getTotalsByCategoryForMonth(int month) {
-        ArrayList<OverviewItem> entryList = new ArrayList<OverviewItem>();
+        ArrayList<OverviewItem> entryList = new ArrayList<>();
 
-        entryList = getCategoriesAndProjections(entryList);
-        entryList = getEntryAmountsForMonth(entryList, month);
+        entryList.addAll(getCategoriesAndProjections());
+        for (OverviewItem item : entryList) {
+            item.actual = getActualAmountForMonthAndCategory(month, item.categoryId);
+        }
 
         return entryList;
     }
 
-    private ArrayList<OverviewItem> getCategoriesAndProjections(ArrayList<OverviewItem> list) {
+    private ArrayList<OverviewItem> getCategoriesAndProjections() {
         Cursor queryResult = db.query(CATEGORIES_TABLE, new String[] { CATEGORIES_ID_KEY,
                 CATEGORIES_NAME_KEY, CATEGORIES_AMOUNT_KEY, CATEGORIES_IS_ACTIVE_KEY }, null, null, null,
                 null, null);
@@ -84,9 +90,8 @@ public class OverviewProvider extends BudgetDbAdapter {
     }
 
     public ArrayList<OverviewItem> createOverviewItemArrayListFromCursor(Cursor cursor) {
-        ArrayList<OverviewItem> resultList = null;
+        ArrayList<OverviewItem> resultList = new ArrayList<>();
         if (cursor.moveToFirst()) {
-            resultList = new ArrayList<OverviewItem>();
             do {
                 OverviewItem overviewItem = new OverviewItem();
                 overviewItem.categoryId = cursor.getInt(BudgetDbAdapter.CATEGORIES_ID_COLUMN);
@@ -98,21 +103,20 @@ public class OverviewProvider extends BudgetDbAdapter {
         return resultList;
     }
 
-    private ArrayList<OverviewItem> getEntryAmountsForMonth(ArrayList<OverviewItem> list, int month) {
+    private double getActualAmountForMonthAndCategory(int month, int categoryId) {
+        double result;
         String queryString = "SELECT SUM(" + ENTRIES_AMOUNT_KEY + ") FROM " + ENTRIES_TABLE + " WHERE "
-                + ENTRIES_CATEGORY_KEY + " = ? AND + strftime('%m', " + ENTRIES_DATE_KEY + ") = '" + month
+                + ENTRIES_CATEGORY_KEY + " = ? AND strftime('%m', " + ENTRIES_DATE_KEY + ") = '" + String.format("%02d", month)
                 + "';";
-        for (int i = 0; i < list.size(); i++) {
-            Cursor queryResult = db.rawQuery(queryString,
-                    new String[] { String.valueOf(list.get(i).categoryId) });
-            if (queryResult.moveToFirst()) {
-                double temp = queryResult.getDouble(0);
-                list.get(i).actual = temp;
-            } else {
-                list.get(i).actual = 0.0;
-            }
+        Cursor queryResult = db.rawQuery(queryString,
+                new String[]{String.valueOf(categoryId)});
+        if (queryResult.moveToFirst()) {
+            result = queryResult.getDouble(0);
+        } else {
+            result = 0.0;
         }
+        queryResult.close();
 
-        return list;
+        return result;
     }
 }
