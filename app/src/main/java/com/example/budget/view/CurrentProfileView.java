@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.budget.R;
 import com.example.budget.adapter.BudgetDbAdapter;
@@ -66,7 +67,7 @@ public class CurrentProfileView extends AbstractBudgetView {
             parent.setEditExistingCategory(true);
             parent.setTab(2);
         } catch (Exception e) {
-            
+
         }
     }
 
@@ -74,7 +75,8 @@ public class CurrentProfileView extends AbstractBudgetView {
         try {
             currentProfileViewProvider.deleteCategory(myForecasts.get(selected).getId());
         } catch (Exception e) {
-
+            Toast.makeText(this, "Unable to delete category. Make sure no entries reference it.", Toast.LENGTH_LONG)
+                    .show();
         }
         refreshList();
     }

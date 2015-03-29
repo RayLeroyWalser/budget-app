@@ -21,7 +21,7 @@ import com.example.budget.layout.Category;
 public class BudgetDbAdapter {
 
     private static final String DATABASE_NAME = "budgeter.db";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 6;
 
     protected SQLiteDatabase db;
     private final Context context;
@@ -40,8 +40,8 @@ public class BudgetDbAdapter {
     public static final int ENTRIES_CATEGORY_COLUMN = 3;
     public static final int ENTRIES_AMOUNT_COLUMN = 4;
     public static final int ENTRIES_UPDATED_COLUMN = 5;
-    public final String[] allEntryColumns = new String[] { ENTRIES_ID_KEY, ENTRIES_DATE_KEY,
-            ENTRIES_DESCRIPTION_KEY, ENTRIES_CATEGORY_KEY, ENTRIES_AMOUNT_KEY, ENTRIES_LAST_UPDATED_KEY };
+    public final String[] allEntryColumns = new String[]{ENTRIES_ID_KEY, ENTRIES_DATE_KEY,
+            ENTRIES_DESCRIPTION_KEY, ENTRIES_CATEGORY_KEY, ENTRIES_AMOUNT_KEY, ENTRIES_LAST_UPDATED_KEY};
 
     public static final String CATEGORIES_TABLE = "CATEGORIES";
     public static final String CATEGORIES_ID_KEY = "id";
@@ -54,8 +54,8 @@ public class BudgetDbAdapter {
     public static final int CATEGORIES_NAME_COLUMN = 1;
     public static final int CATEGORIES_AMOUNT_COLUMN = 2;
     public static final int CATEGORIES_IS_ACTIVE_COLUMN = 3;
-    public final String[] allCategoryColumns = new String[] { CATEGORIES_ID_KEY, CATEGORIES_NAME_KEY,
-            CATEGORIES_AMOUNT_KEY, CATEGORIES_IS_ACTIVE_KEY };
+    public final String[] allCategoryColumns = new String[]{CATEGORIES_ID_KEY, CATEGORIES_NAME_KEY,
+            CATEGORIES_AMOUNT_KEY, CATEGORIES_IS_ACTIVE_KEY};
 
     public BudgetDbAdapter(Context _context) {
         this.context = _context;
@@ -134,7 +134,7 @@ public class BudgetDbAdapter {
 
     public boolean hasEntries() {
         Cursor listCursor;
-        listCursor = db.query(ENTRIES_TABLE, new String[] { "COUNT(" + ENTRIES_ID_KEY + ")" }, null, null,
+        listCursor = db.query(ENTRIES_TABLE, new String[]{"COUNT(" + ENTRIES_ID_KEY + ")"}, null, null,
                 null, null, null);
         if (listCursor.moveToFirst()) {
             if (listCursor.getInt(0) == 0) {
@@ -149,7 +149,7 @@ public class BudgetDbAdapter {
     public Category getCategoryForName(String string) {
         Category category = null;
         Cursor queryResult = db.query(CATEGORIES_TABLE, allCategoryColumns, CATEGORIES_NAME_KEY + " = ?",
-                new String[] { string }, null, null, null);
+                new String[]{string}, null, null, null);
         if (queryResult.moveToFirst()) {
             category = new Category();
             category.setId(queryResult.getLong(CATEGORIES_ID_COLUMN));
@@ -162,7 +162,7 @@ public class BudgetDbAdapter {
     public Category getCategoryForId(long id) {
         Category category = null;
         Cursor queryResult = db.query(CATEGORIES_TABLE, allCategoryColumns, CATEGORIES_ID_KEY + " = ?",
-                new String[] { String.valueOf(id) }, null, null, null);
+                new String[]{String.valueOf(id)}, null, null, null);
         if (queryResult.moveToFirst()) {
             category = new Category();
             category.setId(queryResult.getLong(CATEGORIES_ID_COLUMN));
@@ -205,32 +205,46 @@ public class BudgetDbAdapter {
         return resultList;
     }
 
-    /**************************************************************************************************/
+    /**
+     * **********************************************************************************************
+     */
 
     private static class budgetDBOpenHelper extends SQLiteOpenHelper {
+
         public budgetDBOpenHelper(Context context, String name, CursorFactory factory, int version) {
             super(context, name, factory, version);
         }
-
-        private static final String CREATE_ENTRIES_TABLE = "create table " + ENTRIES_TABLE + " ("
-                + ENTRIES_ID_KEY + " integer primary key autoincrement, " + ENTRIES_DATE_KEY + " datetime, "
-                + ENTRIES_DESCRIPTION_KEY + " text, " + ENTRIES_CATEGORY_KEY + " bigint, "
-                + ENTRIES_AMOUNT_KEY + " double , " + ENTRIES_LAST_UPDATED_KEY + " datetime);";
 
         // TODO make name column unique
         private static final String CREATE_CATEGORIES_TABLE = "create table " + CATEGORIES_TABLE + " ("
                 + CATEGORIES_ID_KEY + " integer primary key autoincrement, " + CATEGORIES_NAME_KEY
                 + " text, " + CATEGORIES_AMOUNT_KEY + " double, " + CATEGORIES_IS_ACTIVE_KEY + " int);";
 
+        private static final String CREATE_ENTRIES_TABLE = "create table " + ENTRIES_TABLE + " ("
+                + ENTRIES_ID_KEY + " integer primary key autoincrement, " + ENTRIES_DATE_KEY + " datetime, "
+                + ENTRIES_DESCRIPTION_KEY + " text, " + ENTRIES_CATEGORY_KEY + " bigint, "
+                + ENTRIES_AMOUNT_KEY + " double , " + ENTRIES_LAST_UPDATED_KEY + " datetime, " +
+                " FOREIGN KEY(" + ENTRIES_CATEGORY_KEY + ") REFERENCES categories(" +
+                CATEGORIES_ID_KEY + "));";
+
         @Override
         public void onCreate(SQLiteDatabase _db) {
-            _db.execSQL(CREATE_ENTRIES_TABLE);
             _db.execSQL(CREATE_CATEGORIES_TABLE);
+            _db.execSQL(CREATE_ENTRIES_TABLE);
         }
 
         @Override
-        public void onUpgrade(SQLiteDatabase _db, int _oldVersion, int _newVersion) {
+        public void onUpgrade(SQLiteDatabase _db, int oldVersion, int newVersion) {
+            _db.execSQL("DROP TABLE " + ENTRIES_TABLE);
+            _db.execSQL("DROP TABLE " + CATEGORIES_TABLE);
+            _db.execSQL(CREATE_CATEGORIES_TABLE);
+            _db.execSQL(CREATE_ENTRIES_TABLE);
+        }
 
+        @Override
+        public void onOpen(SQLiteDatabase db) {
+            super.onOpen(db);
+            db.setForeignKeyConstraintsEnabled(true);
         }
     }
 }
