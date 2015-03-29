@@ -19,7 +19,7 @@ public class OverviewProvider extends BudgetDbAdapter {
         String queryString = "SELECT SUM(" + ENTRIES_AMOUNT_KEY + ") FROM " + ENTRIES_TABLE
                 + " WHERE strftime('%m', " + ENTRIES_DATE_KEY + ") = ? and " + ENTRIES_AMOUNT_KEY + " > 0;";
 
-        Cursor queryResult = db.rawQuery(queryString, new String[] { String.valueOf(month) });
+        Cursor queryResult = db.rawQuery(queryString, new String[]{String.format("%02d", month)});
         if (queryResult.moveToFirst()) {
             amount = queryResult.getDouble(0);
         }
@@ -33,7 +33,7 @@ public class OverviewProvider extends BudgetDbAdapter {
         String queryString = "SELECT SUM(" + ENTRIES_AMOUNT_KEY + ") FROM " + ENTRIES_TABLE
                 + " WHERE strftime('%m', " + ENTRIES_DATE_KEY + ") = ? and " + ENTRIES_AMOUNT_KEY + " < 0;";
 
-        Cursor queryResult = db.rawQuery(queryString, new String[] { String.valueOf(month) });
+        Cursor queryResult = db.rawQuery(queryString, new String[]{String.format("%02d", month)});
         if (queryResult.moveToFirst()) {
             amount = queryResult.getDouble(0);
         }
@@ -82,8 +82,8 @@ public class OverviewProvider extends BudgetDbAdapter {
     }
 
     private ArrayList<OverviewItem> getCategoriesAndProjections() {
-        Cursor queryResult = db.query(CATEGORIES_TABLE, new String[] { CATEGORIES_ID_KEY,
-                CATEGORIES_NAME_KEY, CATEGORIES_AMOUNT_KEY, CATEGORIES_IS_ACTIVE_KEY }, null, null, null,
+        Cursor queryResult = db.query(CATEGORIES_TABLE, new String[]{CATEGORIES_ID_KEY,
+                        CATEGORIES_NAME_KEY, CATEGORIES_AMOUNT_KEY, CATEGORIES_IS_ACTIVE_KEY}, null, null, null,
                 null, null);
 
         return createOverviewItemArrayListFromCursor(queryResult);
@@ -106,10 +106,9 @@ public class OverviewProvider extends BudgetDbAdapter {
     private double getActualAmountForMonthAndCategory(int month, int categoryId) {
         double result;
         String queryString = "SELECT SUM(" + ENTRIES_AMOUNT_KEY + ") FROM " + ENTRIES_TABLE + " WHERE "
-                + ENTRIES_CATEGORY_KEY + " = ? AND strftime('%m', " + ENTRIES_DATE_KEY + ") = '" + String.format("%02d", month)
-                + "';";
+                + ENTRIES_CATEGORY_KEY + " = ? AND strftime('%m', " + ENTRIES_DATE_KEY + ") = ?;";
         Cursor queryResult = db.rawQuery(queryString,
-                new String[]{String.valueOf(categoryId)});
+                new String[]{String.valueOf(categoryId), String.format("%02d", month)});
         if (queryResult.moveToFirst()) {
             result = queryResult.getDouble(0);
         } else {
