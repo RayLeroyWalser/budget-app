@@ -211,8 +211,6 @@ public class BudgetDbAdapter {
 
     private static class budgetDBOpenHelper extends SQLiteOpenHelper {
 
-        private static String TURN_ON_FOREIGN_KEYS = "PRAGMA foreign_keys = ON";
-
         public budgetDBOpenHelper(Context context, String name, CursorFactory factory, int version) {
             super(context, name, factory, version);
         }
@@ -239,7 +237,6 @@ public class BudgetDbAdapter {
         public void onUpgrade(SQLiteDatabase _db, int oldVersion, int newVersion) {
             _db.execSQL("DROP TABLE " + ENTRIES_TABLE);
             _db.execSQL("DROP TABLE " + CATEGORIES_TABLE);
-            _db.execSQL(TURN_ON_FOREIGN_KEYS);
             _db.execSQL(CREATE_CATEGORIES_TABLE);
             _db.execSQL(CREATE_ENTRIES_TABLE);
         }
